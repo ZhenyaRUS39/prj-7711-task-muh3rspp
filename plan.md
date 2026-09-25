@@ -3,9 +3,48 @@
 **Project:** `PRJ-7077`  
 **Task ID:** `task-muh3rspp`  
 **Repo:** `prj-7711-task-muh3rspp`  
-**Progress:** 0/0 subtasks done
+**Progress:** 1/4 subtasks done
+
+## Summary
+
+CLI калькулятор для комплексных чисел на Python: парсинг ввода → арифметика → тесты → README.
 
 ## Subtasks
+
+### ⏳ 1. Создать структуру репозитория и парсер ввода
+
+- **ID:** `sub-1`
+- **Profile:** `20razrab1`
+- **Status:** `unknown`
+- **Description:** Создать cli_calc/ с __init__.py, core.py (функции add/sub/mul/div для complex) и parser.py (разбор строк вида '1+2j', '(3-4i)', операторов +,-,*,/). Допускается встроенный complex Python как основа.
+- **Test plan:** python -c 'from cli_calc.parser import parse; assert parse("1+2j") == (1+2j); assert parse("(3-4i)") == (3-4j)' — без ошибок
+
+### ⬜ 2. Реализовать CLI-интерфейс (REPL и eval-режим)
+
+- **ID:** `sub-2`
+- **Profile:** `30razrab2`
+- **Status:** `pending`
+- **Description:** main.py: режим --eval '1+2j * 3-4j' выдаёт результат; без аргументов — интерактивный REPL с подсказкой '> '. Команды :help, :quit. Обработка ZeroDivisionError, ValueError.
+- **Test plan:** python cli_calc/main.py --eval '(1+2j)*(3-4j)' печатает (11+2j); REPL принимает выражение и выдаёт ответ
+- **Dependencies:** `sub-1`
+
+### ⬜ 3. Написать unit-тесты (pytest)
+
+- **ID:** `sub-3`
+- **Profile:** `20razrab1`
+- **Status:** `pending`
+- **Description:** tests/test_core.py и tests/test_parser.py: покрыть add/sub/mul/div, деление на ноль, парсинг разных форматов, eval-режим через subprocess.
+- **Test plan:** pytest tests/ -v — все тесты зелёные, coverage core+parser ≥ 90%
+- **Dependencies:** `sub-2`
+
+### ⬜ 4. README и requirements.txt
+
+- **ID:** `sub-4`
+- **Profile:** `30razrab2`
+- **Status:** `pending`
+- **Description:** README.md с примерами (--eval, REPL), requirements.txt (pytest для dev). Описание поддерживаемых операций и форматов.
+- **Test plan:** README содержит секции Install/Usage/Examples; python -m cli_calc.main --help работает
+- **Dependencies:** `sub-3`
 
 
 ---
